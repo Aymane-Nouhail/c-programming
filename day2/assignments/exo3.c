@@ -9,4 +9,13 @@ int main(){
 	char  d = 'd';
 	printf("%d\n",(3*i - 2*j)%(2*d - c));
 	printf("%f\n",2*(((float)(i)/5) + (float)((4*(j-3))%(i + j - 2))));
+	printf("%d\n",(3*i - 2*j)%(2*d - c));
+	printf("%f\n",2*(((float)(i)/5) + (float)((4*(j-3))%(i + j - 2))));
+	printf("%d\n",i <= j);
+	printf("%d\n",c == 99);
+    	printf("%\n",5*(i + j) > 'c');
+    	printf("%d\n",(i > 0) && (j < 5));
+    	printf("%d\n",(i > 0) || (j < 5));
+    	printf("%d\n",(x > y) && (i > 0) || (j < 5));
+    	printf("%d\n",(x > y) && (i > 0) && (j < 5));
 }
