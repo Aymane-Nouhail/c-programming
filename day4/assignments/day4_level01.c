@@ -40,9 +40,9 @@ void reverseString(char* s){
     /*char ** newString = (char **)malloc(10*sizeof(char *));
     for(int i=0;i<10;i++)
         newString[i]=(char *)malloc(10*sizeof(char));*/
-    char newString[10][10];
+    char newString[10][10]; //we create a table of strings.
     int j=0, ctr=0, i=0;
-    for(i=0;i<=(al_strlen(str1));i++)
+    for(i=0;i<=(al_strlen(str1));i++) //we place each word in a case in the table.
     {
         if(str1[i]==' '||str1[i]=='\0')
         {
@@ -59,8 +59,8 @@ void reverseString(char* s){
     for(i=ctr;i<10;i++){
         for(j=0;j<10;j++) newString[i][j] = '\0';
     }
-    for(i=0;i<10;i++) reverseString(newString[i]);
-    for(i=0;i<10;i++) printf("%s ",newString[i]);
+    for(i=0;i<10;i++) reverseString(newString[i]); //we then invert each element of the table.
+    for(i=0;i<10;i++) printf("%s ",newString[i]); //and print out the result.
     return;
     //return newString;
 }
