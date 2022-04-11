@@ -67,16 +67,24 @@ void reverseString(char* s){
 
 int main(){
     char word[10];
-    printf("Enter the string : ");
+    printf("Enter a string to get its size: ");
     gets(word);
     printf("the size of the previous string is : %d\n",al_strlen(word));
+    printf("---------------------------\n");
+    printf("Enter a string to reverse : ");
+    gets(word);
     reverseString(word);
     printf("the inverted string is : %s\n",word);
     char copy[10];
     al_strcpy(copy,word);
     printf("the copy of the previous string is : %s\n",copy);
-    al_strcat(copy,copy);
-    printf("the concatenation of the previous string is : %s\n",copy);
+    printf("---------------------------\n");
+    printf("Enter two strings to concatenate separated by enters : \n");
+    char copy1[10], copy2[10];
+    printf("1st string : "); gets(copy1); printf("1st string : "); gets(copy2);
+    al_strcat(copy1,copy2);
+    printf("the concatenation of the previous string is : %s\n",copy1);
+    printf("---------------------------\n");
     //next is what concerns inversing a string word by word.
     printf("Enter the string to inverse word by word : \n");
     char str1[50];
