@@ -5,7 +5,7 @@
 
 struct contact
 {
-    int phoneNumber;
+    char phoneNumber[12]; //string instead of int to accept 0 at the start.
     int id;
     char fullName[20];
 };
@@ -36,7 +36,7 @@ int main(){
             //////section of scanning the name ends here.
             printf("\t----------------------------------\n");
             printf("\tEnter the phone number : ");
-            scanf("%d",&book[order].phoneNumber);
+            scanf("%s",&book[order].phoneNumber);
             printf("----------------------------------\n");
             book[order].id=order;
             order++;
@@ -45,7 +45,7 @@ int main(){
             printf("\n----------------------------------All contacts : ----------------------------------\n");
             for(i=0;i<order;i++){
                 printf("\tfull name : %s \n",book[i].fullName);
-                printf("\tphone number : %d \n",book[i].phoneNumber);
+                printf("\tphone number : %s \n",book[i].phoneNumber);
                 printf("\tid : %d\n",book[i].id);
                 printf("\t----------------------------------\n");
             }

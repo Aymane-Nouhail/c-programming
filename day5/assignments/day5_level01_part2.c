@@ -36,5 +36,6 @@ int main(){
     isort(&arr,n);
     printf("\nSorted   : ");
     printArray(arr,n);
+    free(arr);
     return 0;
 }
