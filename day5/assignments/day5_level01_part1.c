@@ -1,6 +1,17 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<string.h>
+
+int al_strlen(const char* s){ //to avoid using string.h
+    int len=0;
+    while(s[len] != '\0'){
+        len++;
+    }
+    return len;
+}
+
+
+//////////////////////////////////
+
 
 void* al_memchr(void* array, int c, int n){
     char* array1 = (char*) array;
@@ -38,7 +49,14 @@ void* al_memmove(void * dest, void * src,int n){
     return dest1;
 }
 
-
+char* al_strdup(const char *s){
+    int n = al_strlen(s);
+    char* copy = (char*)malloc(n*sizeof(char));
+    for(int i=0;i<n;i++)
+        copy[i] = s[i];
+    copy[n] = '\0';
+    return copy;
+}
 int main(){
     //this part concerns al_memchr
     printf("------------al_memchr part : ------------\n");
@@ -59,7 +77,7 @@ int main(){
     //this part concerns al_memcpy
     printf("\n------------al_memcpy part : ------------\n\n");
     char src[30] = "The quick brown fox";
-    char dest[30] = "random stuff";
+    char dest[30] = "slow stuff";
     al_memcpy(dest,src,3);
     printf("%s",dest);
     //
@@ -68,9 +86,11 @@ int main(){
     char src1[30] = "Here is a string";
     al_memmove(src1+3, src1, 3);
     printf("%s",src1);
-    printf("%s",src1);
     //
-    //this part concerns al_memmove
-    printf("\n------------al_memmove part : ------------\n\n");
+    //this part concerns al_strdup
+    printf("\n------------al_strdup part : ------------\n\n");
+    char copyThis[50] = "al_strdup will copy this string";
+    char* theCopy = al_strdup(copyThis);
+    printf("%s\n\n",theCopy);
     return 0;
 }
