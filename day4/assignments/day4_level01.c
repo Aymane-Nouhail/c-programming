@@ -81,7 +81,7 @@ int main(){
     printf("---------------------------\n");
     printf("Enter two strings to concatenate separated by enters : \n");
     char copy1[10], copy2[10];
-    printf("1st string : "); gets(copy1); printf("1st string : "); gets(copy2);
+    printf("1st string : "); gets(copy1); printf("2nd string : "); gets(copy2);
     al_strcat(copy1,copy2);
     printf("=> the concatenation of the previous two strings is : %s\n",copy1);
     printf("---------------------------\n");
