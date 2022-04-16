@@ -1,11 +1,19 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<string.h> //for strlen
 
+int al_strlen(const char* s){ //to avoid using string.h
+    int len=0;
+    while(s[len] != '\0'){
+        len++;
+    }
+    return len;
+}
+
+///////////////////////////////////////////////
 
 int nbOccurence(char s,char *str){
     int occurence = 0; 
-    for(int i=0;i<strlen(str);i++){
+    for(int i=0;i<al_strlen(str);i++){
         if(str[i] == s) occurence++;
     }
     return occurence;
@@ -17,7 +25,7 @@ char** strsplit(char *str, char delim){
     for(int i=0;i<10;i++)
         newString[i]=(char *)malloc(10*sizeof(char)); //words are usually shorter than 10 in size so i'll settle with that 
     int j=0, ctr=0, i=0;
-    for(i=0;i<=(strlen(str));i++) //we place each word in a case in the table.
+    for(i=0;i<=(al_strlen(str));i++) //we place each word in a case in the table.
     {
         if(str[i]==delim||str[i]=='\0')
         {
