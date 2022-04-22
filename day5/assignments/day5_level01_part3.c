@@ -24,19 +24,19 @@ char** strsplit(char *str, char delim){
     char ** newString = (char **)malloc(n*sizeof(char *));
     for(int i=0;i<10;i++)
         newString[i]=(char *)malloc(10*sizeof(char)); //words are usually shorter than 10 in size so i'll settle with that 
-    int j=0, ctr=0, i=0;
+    int j=0, m=0, i=0;
     for(i=0;i<=(al_strlen(str));i++) //we place each word in a case in the table.
     {
-        if( (str[i]==delim && str [i+1] != delim )|| str[i]=='\0') //if we encounter delim, we end the ctr-th element of the table of strings.
+        if( (str[i]==delim && str [i+1] != delim )|| str[i]=='\0') //if we encounter delim, we end the m-th element of the table of strings.
         {
-            newString[ctr][j]='\0'; //ending the element
-            ctr++; //moving to the next word
+            newString[m][j]='\0'; //ending the element
+            m++; //moving to the next word
             j=0; //reset the counter for characters
         }
-        else //else we just fill the ctr-th element with the letters from our string
+        else //else we just fill the m-th element with the letters from our string
         {
             if (str[i] != delim){
-            newString[ctr][j]=str[i];
+            newString[m][j]=str[i];
             j++;
             }
         }
