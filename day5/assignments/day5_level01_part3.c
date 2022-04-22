@@ -2,6 +2,14 @@
 #include<stdlib.h>
 #include<string.h>
 
+
+/******** Prototypes ***********/
+int nbOccurence(char *, char);
+void trim(char *, char);
+int longestWord(char *, char);
+char** strsplit(char *, char);
+
+
 //this function counts the number of non-repeat occurences of a character in a string
 //nbOccurence("Hello     I am       Aymane" , ' ') = 3
 int nbOccurence(char *str, char delim){
@@ -11,32 +19,51 @@ int nbOccurence(char *str, char delim){
     }
     return occurence;
 }
+
+
 //removes spaces (or delim in general) from the start and end of a string.
 void trim(char *str, char delim)
 {
     char* newstart = str;
-    while (*newstart == delim) {
+    while (*newstart == delim)
         ++newstart;
-    }
     memmove( str, newstart, strlen( newstart) + 1);
-    int i = strlen(str) - 1;
-    while (i >= 0)
+    int n = strlen(str) - 1;
+    while (n >= 0)
     {
-    if (str[i] == delim) i--;
+    if (str[n] == delim) n--;
     else break;
     }
-    str[i + 1] = '\0';
+    str[n + 1] = '\0';
     return;
 }
+
+
+//returns the size of the longest word in a string
+int longestWord(char* str, char delim){
+    int n=strlen(str), biggest = 0, temp=0;
+    for(int i=0;i<=n;i++){
+        if(str[i] != ' ' && str[i]!='\0') temp++;
+        else{
+            if(temp>biggest){
+                biggest = temp;
+            }
+            temp = 0;
+        }
+    }
+    return biggest;
+}
+
 
 char** strsplit(char *str, char delim){
     trim(str, delim); //removing any unnecessary delims at the start or end
     int n = nbOccurence(str,delim) + 1; //the number of words in the table
+    int len = longestWord(str, delim); //the size of the longest word in the string
+    //printf("the size of the longest word in the string is %d\n", len);
     printf("the number of words in the table is %d.\n",n);
     char ** newString = (char **)malloc(n*sizeof(char *)); 
     for(int i=0;i<n;i++)
-        newString[i]=(char *)malloc(30*sizeof(char)); //words are usually shorter than 30 in size so i'll settle with that 
-        //TODO : function that returns maximum length of a word in a string so i can ditch the arbitrary big size in favor of this.
+        newString[i]=(char *)malloc(len*sizeof(char));  
     int j=0, m=0, i=0;
     for(i=0;i<=(strlen(str));i++) //we place each word in a case in the table.
     {
