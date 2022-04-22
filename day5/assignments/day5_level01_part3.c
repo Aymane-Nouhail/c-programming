@@ -43,7 +43,7 @@ void trim(char *str, char delim)
 int longestWord(char* str, char delim){
     int n=strlen(str), biggest = 0, temp=0;
     for(int i=0;i<=n;i++){
-        if(str[i] != ' ' && str[i]!='\0') temp++;
+        if(str[i] != delim && str[i]!='\0') temp++;
         else{
             if(temp>biggest){
                 biggest = temp;
