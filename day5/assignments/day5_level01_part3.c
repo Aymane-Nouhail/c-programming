@@ -14,7 +14,7 @@ int al_strlen(const char* s){ //to avoid using string.h
 int nbOccurence(char s,char *str){
     int occurence = 0; 
     for(int i=0;i<al_strlen(str);i++){
-        if(str[i] == s) occurence++;
+        if(str[i] == s && str[i+1] != s) occurence++;
     }
     return occurence;
 }
@@ -27,23 +27,25 @@ char** strsplit(char *str, char delim){
     int j=0, ctr=0, i=0;
     for(i=0;i<=(al_strlen(str));i++) //we place each word in a case in the table.
     {
-        if(str[i]==delim||str[i]=='\0')
+        if( (str[i]==delim && str [i+1] != delim )|| str[i]=='\0') //if we encounter delim, we end the ctr-th element of the table of strings.
         {
-            newString[ctr][j]='\0';
-            ctr++;
-            j=0;
+            newString[ctr][j]='\0'; //ending the element
+            ctr++; //moving to the next word
+            j=0; //reset the counter for characters
         }
-        else
+        else //else we just fill the ctr-th element with the letters from our string
         {
+            if (str[i] != delim){
             newString[ctr][j]=str[i];
             j++;
+            }
         }
     }
     return newString;
 }
 
 int main(){
-    char word[20] = "This is a test";
+    char word[20] = "This  is   a test";
     char s = ' ';
     char ** splitWord = strsplit(word,s);
     int n = nbOccurence(s,word)+1;
