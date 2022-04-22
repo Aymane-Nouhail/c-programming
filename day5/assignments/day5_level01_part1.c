@@ -1,17 +1,23 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-int al_strlen(const char* s){ //to avoid using string.h
+/************Prototypes************/
+int al_strlen(const char*); //to avoid using string.h
+void* al_memchr(void*, int, int);
+void* al_memset(void*, int, int);
+void* al_memcpy(void*, void*, int);
+void* al_memmove(void* , void*, int);
+char* al_strdup(const char*);
+
+
+
+int al_strlen(const char* s){ 
     int len=0;
     while(s[len] != '\0'){
         len++;
     }
     return len;
 }
-
-
-//////////////////////////////////
-
 
 void* al_memchr(void* array, int c, int n){
     char* array1 = (char*) array;

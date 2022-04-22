@@ -1,5 +1,13 @@
 #include <stdio.h>  
 //#include <stdlib.h>
+
+/********Prototypes*********/
+int al_strlen(char*);
+char* al_strcpy(char*, char*);
+char* al_strcat(char*, char*);
+void reverseString(char*);
+void str_wreverse(char *);
+
 int al_strlen(char* s){
     int len=0;
     while(s[len] != '\0'){
