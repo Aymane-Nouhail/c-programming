@@ -18,6 +18,19 @@ int nbOccurence(char s,char *str){
     }
     return occurence;
 }
+
+char* cleanupString(char delim, char *str){
+
+    int a = 0, n = strlen(str)-1;
+    while(str[a] == delim) a++;
+    while(str[n] == delim ) n--;
+    str[n+1] = '\0';
+	m = str + a;
+    printf("[%s]\n %d \n",str);
+    return str;
+    
+}
+
 char** strsplit(char *str, char delim){
     //this function splits according to delim and doesn't include it in the split, it can be easily modified to include it
     int n = nbOccurence(delim,str)+1;
