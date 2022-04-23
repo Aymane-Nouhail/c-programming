@@ -7,6 +7,7 @@
 int nbOccurence(char *, char);
 void trim(char *, char);
 int longestWord(char *, char);
+int* wordSizes(char*, char);
 char** strsplit(char *, char);
 
 
@@ -54,17 +55,49 @@ int longestWord(char* str, char delim){
     }
     return biggest;
 }
+//returns a table countaining the size of each word. Input has to be trimmed (no delim at start or end)
+int* wordSizes(char* str, char delim){
+    int n=nbOccurence(str,delim)+1, count=0, j=0;
+    int* T = (int*)malloc(n*sizeof(int));
+    for(int i=0;i<=strlen(str);i++){
+        //printf("i = %d , count = %d\n", i, count);
+        if(str[i] != delim && str[i]!='\0'){
+            count++;
+        }
+        else{
+            if((str[i] == delim || str[i] == '\0') && str[i+1] != delim){
+                T[j] = count;
+                count = 0;
+                j++;
+            }
+        }
+    }
+    /*printf("[");
+    for(int i=0;i<n;i++){
+        printf("%d, ",T[i]);
+    }
+    printf("\b\b]");
+    */
+    return T;
+}
 
-
-char** strsplit(char *str, char delim){
-    trim(str, delim); //removing any unnecessary delims at the start or end
-    int n = nbOccurence(str,delim) + 1; //the number of words in the table
+char** strsplit(char *strr, char delim){
+    //making a copy of the input string that will be cleaned using trim.
+    char* str = (char*)malloc(strlen(strr)*sizeof(char));
+    strcpy(str,strr);
+    trim(str, delim);
+    //the number of words in the table is one more than the number of occurences of delim
+    int n = nbOccurence(str,delim) + 1;
+    /*
     int len = longestWord(str, delim); //the size of the longest word in the string
-    //printf("the size of the longest word in the string is %d\n", len);
+    printf("the size of the longest word in the string is %d\n", len);
+    */
     printf("the number of words in the table is %d.\n",n);
-    char ** newString = (char **)malloc(n*sizeof(char *)); 
+    char ** newString = (char **)malloc(n*sizeof(char *)); //allocating n tables of chars.
+    int* T = wordSizes(str, delim);
     for(int i=0;i<n;i++)
-        newString[i]=(char *)malloc(len*sizeof(char));  
+        newString[i]=(char *)malloc(T[i]*sizeof(char));  //allocating the size of each word for each char*
+    free(T);
     int j=0, m=0, i=0;
     for(i=0;i<=(strlen(str));i++) //we place each word in a case in the table.
     {
@@ -82,6 +115,7 @@ char** strsplit(char *str, char delim){
             }
         }
     }
+    free(str);
     //printing the result.
     printf("[");
     for(i=0;i<n;i++)
@@ -91,8 +125,9 @@ char** strsplit(char *str, char delim){
 }
 
 int main(){
-    char word[100] = "   I'm testing     this program It's   great so far.    ";
+    char word[100] = "   I'm testing     this progrjdlkhdjdhkdam It's   great so far.    ";
     char s = ' ';
     char** result = strsplit(word, s);
+    printf("\n%s",word);
     return 0;
 }
