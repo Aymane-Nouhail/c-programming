@@ -13,26 +13,27 @@ char** strsplit(char *, char);
 //this function counts the number of non-repeat occurences of a character in a string
 //nbOccurence("Hello     I am       Aymane" , ' ') = 3
 int nbOccurence(char *str, char delim){
-    int occurence = 0; 
-    for(int i=0;i<strlen(str);i++){
-        if(str[i] == delim && str[i+1] != delim) occurence++;
+    int n = 0; 
+    for(int i=0; str[i]!='\0' ;i++){
+        if(str[i] == delim && str[i+1] != delim) n++;
     }
-    return occurence;
+    return n;
 }
 
 
 //removes spaces (or delim in general) from the start and end of a string.
 void trim(char *str, char delim)
 {
+    //PART 1 : removing the spaces (delims) from the start.
     char* newstart = str;
     while (*newstart == delim)
         ++newstart;
-    memmove( str, newstart, strlen( newstart) + 1);
+    memmove(str, newstart, strlen( newstart) + 1);
+    //PART 2 : removing the spaces (delims) from the end.
     int n = strlen(str) - 1;
-    while (n >= 0)
-    {
-    if (str[n] == delim) n--;
-    else break;
+    while (n >= 0){
+        if (str[n] == delim) n--;
+        else break;
     }
     str[n + 1] = '\0';
     return;
