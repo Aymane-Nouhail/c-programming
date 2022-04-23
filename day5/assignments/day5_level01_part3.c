@@ -65,19 +65,13 @@ int* wordSizes(char* str, char delim){
             count++;
         }
         else{
-            if((str[i] == delim || str[i] == '\0') && str[i+1] != delim){
+            if(str[i+1] != delim){
                 T[j] = count;
                 count = 0;
                 j++;
             }
         }
     }
-    /*printf("[");
-    for(int i=0;i<n;i++){
-        printf("%d, ",T[i]);
-    }
-    printf("\b\b]");
-    */
     return T;
 }
 
