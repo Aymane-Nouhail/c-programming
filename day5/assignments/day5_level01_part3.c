@@ -82,10 +82,6 @@ char** strsplit(char *strr, char delim){
     trim(str, delim);
     //the number of words in the table is one more than the number of occurences of delim
     int n = nbOccurence(str,delim) + 1;
-    /*
-    int len = longestWord(str, delim); //the size of the longest word in the string
-    printf("the size of the longest word in the string is %d\n", len);
-    */
     printf("the number of words in the table is %d.\n",n);
     char ** newString = (char **)malloc(n*sizeof(char *)); //allocating n tables of chars.
     int* T = wordSizes(str, delim);
