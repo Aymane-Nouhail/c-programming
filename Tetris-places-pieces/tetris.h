@@ -22,7 +22,15 @@ typedef struct piece piece;
 map createMap(unsigned);
 piece createPiece(unsigned,unsigned);
 void libererMap(map);
-void libererPiece(piece);
+void libererPiece(piece);able DEPARTEMENT
+
+ (10,'DIRECTION','GENEVE');
+
+ (20,'RECHERCHE','DALLAS');
+
+ (30,'VENTE','CHICAGO');
+
+ (40,'FABRICATION','BOSTON');
 void copyMap(map, map*);
 void scanPiece(piece*);
 void printMap(map);
@@ -150,7 +158,7 @@ void copyMap(map M, map * N){
     return;
 }
 
-
+/*
 piece removeRow(piece P, int k){
     piece res = createPiece(P.row-1,P.column);
     for(int i=0;i<P.row;i++){
@@ -236,7 +244,7 @@ piece cleanPieceColumn(piece P){
 }
 
 
-/*void placePieceSmart(piece P, map* M){
+void placePieceSmart(piece P, map* M){
     int x=0, y=0;
     int n=M->column-P.row, m=M->column-P.column;
     start: ;
