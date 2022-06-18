@@ -22,15 +22,7 @@ typedef struct piece piece;
 map createMap(unsigned);
 piece createPiece(unsigned,unsigned);
 void libererMap(map);
-void libererPiece(piece);able DEPARTEMENT
-
- (10,'DIRECTION','GENEVE');
-
- (20,'RECHERCHE','DALLAS');
-
- (30,'VENTE','CHICAGO');
-
- (40,'FABRICATION','BOSTON');
+void libererPiece(piece);
 void copyMap(map, map*);
 void scanPiece(piece*);
 void printMap(map);
