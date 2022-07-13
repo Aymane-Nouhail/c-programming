@@ -83,9 +83,6 @@ int main(){
         scanPiece(&L[i]);
         printPiece(L[i]);
     }
-    /*placePiece(L[0],&M,0,0);
-    placePiece(L[1],&M,1,1);
-    placePiece(L[2],&M,1,0);*/
     placePieceSmart(L,&M,n);
     printMap(M);
     //freeing memory.
